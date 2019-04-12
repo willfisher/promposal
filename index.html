@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
-		var image_names = ["wagegap.png", "1by1.png", "andy.png", "code.png"];
+		var image_names = ["wagegap.png", "1by1.png", "andy.png", "code.png", "french.png"];
 		var yes = 0;
 		var no = 0;
 		
@@ -16,11 +16,17 @@
 		}
 		
 		function getHTML(file) {
+			var yes_text = "YES";
+			var no_text = "NO";
+			if(file == "french.png") {
+				yes_text = "OUI";
+				no_text = "NON";
+			}
 			return '<div id=' + file + ' class="page hidden animated slideInRight">\n' +
 				'<div class="absolutecenter">\n' +
 					'<img class="nodrag proposal" src="' + file + '" /><br>\n' +
-					'<button class="response" onclick="next(\'' + file + '\', true)">YES</button>\n' +
-					'<button class="response" onclick="next(\'' + file + '\', false)">NO</button>\n' +
+					'<button class="response" onclick="next(\'' + file + '\', true)">' + yes_text + '</button>\n' +
+					'<button class="response" onclick="next(\'' + file + '\', false)">' + no_text + '</button>\n' +
 				'</div>\n' +
 			'</div>\n';
 		}
@@ -78,7 +84,10 @@
 		}
 		
 		.proposal {
-			height: 50vh;
+			max-width: 100vw;
+			max-height: 50vw;
+			height: auto;
+			width: auto;
 		}
 		
 		.nodrag {
@@ -128,7 +137,7 @@
 			width: 40vw;
 			height: 50vh;
 			padding: 0px;
-			border-image: url(fancyborder.png) 30% stretch;
+			border-image: url(fancyborder.png) 40% stretch;
 		}
 	</style>
 	<!-- Confetti -->
