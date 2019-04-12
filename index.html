@@ -85,7 +85,7 @@
 		
 		.proposal {
 			max-width: 100vw;
-			max-height: 50vw;
+			max-height: 50vh;
 			height: auto;
 			width: auto;
 		}
