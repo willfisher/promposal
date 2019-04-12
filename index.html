@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
-		var image_names = ["wagegap.png", "andy.png"];
+		var image_names = ["wagegap.png", "1by1.png", "andy.png", "code.png"];
 		var yes = 0;
 		var no = 0;
 		
@@ -34,10 +34,15 @@
 			var index = image_names.indexOf(current);
 			document.getElementById(current).style.display = 'none';
 			if(index == image_names.length - 1) {
-				document.getElementById("no_percent").innerHTML = "" + formatPercent(no / image_names.length * 100);
-				document.getElementById("yes_percent").innerHTML = "" + formatPercent(yes / image_names.length * 100);
+				var result = "";
+				if(no > yes) {
+					result = "No (" + formatPercent(no / image_names.length * 100) + "%)"
+				} else {
+					result = "Yes (" + formatPercent(yes / image_names.length * 100) + "%)";
+				}
+				document.getElementById("result").innerHTML = result;
 				document.getElementById("finish").style.display = 'block';
-				setTimeout(startConfetti, 1000);
+				setTimeout(startConfetti, 1500);
 			} else
 				document.getElementById(image_names[index + 1]).style.display = 'block';
 		}
@@ -215,8 +220,8 @@
 		<div class="absolutecenter finalcard">
 			<div class="cardcenter">
 				<h1 style="font-size: 50px; font-family: 'Parisienne', cursive;">Prom 2019</h1>
-				<span style="font-style: italic;">You Answered<br>
-				<span id="no_percent"></span>% No and <span id="yes_percent"></span>% Yes</span><br><br>
+				<h2 style="font-style: italic; margin-bottom: 0px;">You Answered</h2><br>
+				<h3 id="result" style="margin-top: 0px;"></h3><br><br>
 				<h3 style="font-family: 'Marck Script', cursive;">See You At 7</h3><br><br>
 				<span style="font-style: italic;">- Love Will</span>
 			</div>
